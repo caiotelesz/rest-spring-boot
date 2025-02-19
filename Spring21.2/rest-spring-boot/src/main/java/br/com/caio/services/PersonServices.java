@@ -39,8 +39,8 @@ public class PersonServices {
     }
 
     public Person updatePerson(Person person) {
-        logger.info("Updating one Person!");
 
+        logger.info("Updating one Person!");
         Person entity = repository.findById(person.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
 
