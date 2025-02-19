@@ -1,6 +1,6 @@
 package br.com.caio.controllers;
 
-import br.com.caio.PersonServices;
+import br.com.caio.services.PersonServices;
 import br.com.caio.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

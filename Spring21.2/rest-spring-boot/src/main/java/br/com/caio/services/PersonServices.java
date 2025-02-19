@@ -1,4 +1,4 @@
-package br.com.caio;
+package br.com.caio.services;
 
 import br.com.caio.model.Person;
 import org.springframework.stereotype.Service;
