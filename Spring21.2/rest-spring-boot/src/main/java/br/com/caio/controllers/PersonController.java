@@ -1,6 +1,7 @@
 package br.com.caio.controllers;
 
-import br.com.caio.data.dto.PersonDTO;
+import br.com.caio.data.dto.v1.PersonDTO;
+import br.com.caio.data.dto.v2.PersonDTOV2;
 import br.com.caio.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -35,6 +36,14 @@ public class PersonController {
     )
     public PersonDTO create(@RequestBody PersonDTO person) {
         return service.createPerson(person);
+    }
+
+    @PostMapping(value = "/v2",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public PersonDTOV2 create(@RequestBody PersonDTOV2 person) {
+        return service.createPersonV2(person);
     }
 
     @PutMapping(

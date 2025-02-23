@@ -1,6 +1,6 @@
 package br.com.caio.unitetest.mapper.mocks;
 
-import br.com.caio.data.dto.PersonDTO;
+import br.com.caio.data.dto.v1.PersonDTO;
 import br.com.caio.model.Person;
 
 import java.util.ArrayList;
