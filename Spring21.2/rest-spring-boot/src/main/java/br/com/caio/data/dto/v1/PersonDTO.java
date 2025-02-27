@@ -4,11 +4,14 @@ package br.com.caio.data.dto.v1;
 import java.io.Serializable;
 import java.util.Objects;
 
+//@JsonPropertyOrder({"id", "address", "first_name", "lastName", "gender"})
 public class PersonDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private long id;
+
+//    @JsonProperty("first_name")
     private String firstName;
     private String lastName;
     private String address;

@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+//@JsonPropertyOrder({"id", "address", "firstName", "lastName", "gender"})
 public class PersonDTOV2 implements Serializable {
 
     private static final long serialVersionUID = 1L;
