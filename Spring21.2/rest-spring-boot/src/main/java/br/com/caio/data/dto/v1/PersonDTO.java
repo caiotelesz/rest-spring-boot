@@ -1,7 +1,12 @@
 package br.com.caio.data.dto.v1;
 
 
+import br.com.caio.serializer.GenderSerializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 //@JsonPropertyOrder({"id", "address", "first_name", "lastName", "gender"})
@@ -14,7 +19,10 @@ public class PersonDTO implements Serializable {
 //    @JsonProperty("first_name")
     private String firstName;
     private String lastName;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date birthDay;
     private String address;
+    @JsonSerialize(using = GenderSerializer.class)
     private String gender;
 
     public PersonDTO() {}
@@ -59,15 +67,24 @@ public class PersonDTO implements Serializable {
         this.gender = gender;
     }
 
+    public Date getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PersonDTO person)) return false;
-        return id == person.id && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(address, person.address) && Objects.equals(gender, person.gender);
+        if (o == null || getClass() != o.getClass()) return false;
+        PersonDTO personDTO = (PersonDTO) o;
+        return id == personDTO.id && Objects.equals(firstName, personDTO.firstName) && Objects.equals(lastName, personDTO.lastName) && Objects.equals(birthDay, personDTO.birthDay) && Objects.equals(address, personDTO.address) && Objects.equals(gender, personDTO.gender);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, address, gender);
+        return Objects.hash(id, firstName, lastName, birthDay, address, gender);
     }
 }
