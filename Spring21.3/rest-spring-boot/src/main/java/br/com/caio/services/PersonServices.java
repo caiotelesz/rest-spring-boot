@@ -2,6 +2,7 @@ package br.com.caio.services;
 
 import br.com.caio.controllers.PersonController;
 import br.com.caio.data.dto.v1.PersonDTO;
+import br.com.caio.exception.RequiredObjectIsNullException;
 import br.com.caio.exception.ResourceNotFoundException;
 import br.com.caio.model.Person;
 import br.com.caio.repository.PersonRepository;
@@ -46,6 +47,9 @@ public class PersonServices {
     }
 
     public PersonDTO createPerson(PersonDTO person) {
+
+        if(person == null) throw new RequiredObjectIsNullException();
+
         logger.info("Creating one Person!");
 
         var entity = parseObject(person, Person.class);
@@ -56,6 +60,8 @@ public class PersonServices {
     }
 
     public PersonDTO updatePerson(PersonDTO person) {
+
+        if(person == null) throw new RequiredObjectIsNullException();
 
         logger.info("Updating one Person!");
         Person entity = repository.findById(person.getId())
