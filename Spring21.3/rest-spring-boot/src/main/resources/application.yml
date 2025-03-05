@@ -17,6 +17,6 @@ logging:
   level:
     br.com.caio: WARN
 springdoc:
-  paths-to-match: /person/**
+  paths-to-match: /api/**/v1/**
   swagger-ui:
     use-root-path: true
