@@ -1,14 +1,13 @@
 package br.com.caio.model.book;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Entity
+@Table(name = "books")
 public class Book implements Serializable {
 
     private static final long serialVersionUID = 1L;
