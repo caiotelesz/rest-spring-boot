@@ -17,7 +17,9 @@ public class BookController {
     private BookServices bookServices;
 
     @GetMapping(produces = {
-            MediaType.APPLICATION_JSON_VALUE
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
     })
     public List<BookDTO> findAll() {
         return bookServices.findAll();
@@ -25,23 +27,43 @@ public class BookController {
 
     @GetMapping(
             value = "/{id}",
-            produces = {MediaType.APPLICATION_JSON_VALUE}
+            produces = {
+                MediaType.APPLICATION_JSON_VALUE,
+                MediaType.APPLICATION_XML_VALUE,
+                MediaType.APPLICATION_YAML_VALUE
+            }
     )
     public BookDTO findById(@PathVariable Long id) {
         return bookServices.findById(id);
     }
 
     @PostMapping(
-            consumes = {MediaType.APPLICATION_JSON_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE}
+            consumes = {
+                MediaType.APPLICATION_JSON_VALUE,
+                MediaType.APPLICATION_XML_VALUE,
+                MediaType.APPLICATION_YAML_VALUE
+            },
+            produces = {
+                MediaType.APPLICATION_JSON_VALUE,
+                MediaType.APPLICATION_XML_VALUE,
+                MediaType.APPLICATION_YAML_VALUE
+            }
     )
     public BookDTO save(@RequestBody BookDTO book) {
         return bookServices.createBook(book);
     }
 
     @PutMapping(
-            consumes = {MediaType.APPLICATION_JSON_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE}
+            consumes = {
+                MediaType.APPLICATION_JSON_VALUE,
+                MediaType.APPLICATION_XML_VALUE,
+                MediaType.APPLICATION_YAML_VALUE
+            },
+            produces = {
+                MediaType.APPLICATION_JSON_VALUE,
+                MediaType.APPLICATION_XML_VALUE,
+                MediaType.APPLICATION_YAML_VALUE
+            }
     )
     public BookDTO update(@RequestBody BookDTO book) {
         return bookServices.updateBook(book);
