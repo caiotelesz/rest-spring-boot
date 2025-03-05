@@ -69,7 +69,7 @@ public interface BookControllerDocs {
                     @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
             }
     )
-    BookDTO save(@RequestBody BookDTO book);
+    BookDTO createBook(@RequestBody BookDTO book);
 
     @Operation(summary = "Updates a book's information",
             description = "Updates a book's information by passing in a JSON, XML or YML representation of the updated book.",
@@ -87,7 +87,7 @@ public interface BookControllerDocs {
                     @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
             }
     )
-    BookDTO update(@RequestBody BookDTO book);
+    BookDTO updateBook(@RequestBody BookDTO book);
 
     @Operation(summary = "Deletes a Book",
             description = "Deletes a specific book by their ID",
@@ -102,5 +102,5 @@ public interface BookControllerDocs {
                     @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
             }
     )
-    ResponseEntity<?> delete(@PathVariable("id") Long id);
+    ResponseEntity<?> deleteBookPerId(@PathVariable("id") Long id);
 }

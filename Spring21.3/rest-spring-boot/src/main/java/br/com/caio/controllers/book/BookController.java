@@ -53,7 +53,7 @@ public class BookController implements BookControllerDocs {
             }
     )
     @Override
-    public BookDTO save(@RequestBody BookDTO book) {
+    public BookDTO createBook(@RequestBody BookDTO book) {
         return bookServices.createBook(book);
     }
 
@@ -70,13 +70,13 @@ public class BookController implements BookControllerDocs {
             }
     )
     @Override
-    public BookDTO update(@RequestBody BookDTO book) {
+    public BookDTO updateBook(@RequestBody BookDTO book) {
         return bookServices.updateBook(book);
     }
 
     @DeleteMapping(value = "/{id}")
     @Override
-    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+    public ResponseEntity<?> deleteBookPerId(@PathVariable("id") Long id) {
         bookServices.deleteBookPerId(id);
         return ResponseEntity.noContent().build();
     }

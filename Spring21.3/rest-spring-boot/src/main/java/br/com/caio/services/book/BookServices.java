@@ -87,8 +87,8 @@ public class BookServices {
     private void addHateaoasLinks(BookDTO dto) {
         dto.add(linkTo(methodOn(BookController.class).findAll()).withRel("findAll").withType("GET"));
         dto.add(linkTo(methodOn(BookController.class).findById(dto.getId())).withSelfRel().withType("GET"));
-        dto.add(linkTo(methodOn(BookController.class).save(dto)).withRel("create").withType("POST"));
-        dto.add(linkTo(methodOn(BookController.class).update(dto)).withRel("update").withType("PUT"));
-        dto.add(linkTo(methodOn(BookController.class).delete(dto.getId())).withRel("delete").withType("DELETE"));
+        dto.add(linkTo(methodOn(BookController.class).createBook(dto)).withRel("create").withType("POST"));
+        dto.add(linkTo(methodOn(BookController.class).updateBook(dto)).withRel("update").withType("PUT"));
+        dto.add(linkTo(methodOn(BookController.class).deleteBookPerId(dto.getId())).withRel("delete").withType("DELETE"));
     }
 }
