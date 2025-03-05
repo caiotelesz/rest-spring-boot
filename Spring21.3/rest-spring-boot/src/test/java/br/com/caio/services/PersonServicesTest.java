@@ -30,7 +30,7 @@ class PersonServicesTest {
     @InjectMocks
     private PersonServices personServices;
 
-    @Mock // igual ao @Autowired, só que pra testes
+    @Mock // EQUALS TO @Autowired, BUT FOR TESTS
     PersonRepository personRepository;
 
     @BeforeEach
@@ -41,15 +41,15 @@ class PersonServicesTest {
 
     @Test
     void findById() {
-        // Mockando uma entidade person
+        // MOCKING A ENTITY PERSON
         Person person = input.mockEntity(1);
         person.setId(1L);
-        // vai retornar uma instancia de person
+        // GOING RETURN A PERSON INSTANCE
         when(personRepository.findById(1L)).thenReturn(Optional.of(person));
 
         var result = personServices.findById(1L);
 
-        // Se o resultado estão preenchidos
+        // IF THE RESULTS ARE FILLED
         assertNotNull(result);
         assertNotNull(result.getId());
         assertNotNull(result.getLinks());
@@ -95,6 +95,7 @@ class PersonServicesTest {
         assertEquals("Female", result.getGender());
     }
 
+    // CREATING
     @Test
     void createPerson() {
         Person person = input.mockEntity(1);
@@ -107,7 +108,7 @@ class PersonServicesTest {
 
         var result = personServices.createPerson(dto);
 
-        // Se o resultado estão preenchidos
+        // IF THE RESULTS ARE FILLED
         assertNotNull(result);
         assertNotNull(result.getId());
         assertNotNull(result.getLinks());
@@ -153,6 +154,7 @@ class PersonServicesTest {
         assertEquals("Female", result.getGender());
     }
 
+    // IF CREATE IS NULL
     @Test
     void testCreateWithNullPerson() {
         Exception exception = assertThrows(RequiredObjectIsNullException.class,
@@ -166,6 +168,7 @@ class PersonServicesTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
+    // UPDATE
     @Test
     void updatePerson() {
         Person person = input.mockEntity(1);
@@ -179,7 +182,7 @@ class PersonServicesTest {
 
         var result = personServices.updatePerson(dto);
 
-        // Se o resultado estão preenchidos
+        // IF THE RESULTS ARE FILLED
         assertNotNull(result);
         assertNotNull(result.getId());
         assertNotNull(result.getLinks());
@@ -225,6 +228,7 @@ class PersonServicesTest {
         assertEquals("Female", result.getGender());
     }
 
+    // IF UPDATE IS NULL
     @Test
     void testUpdateWithNullPerson() {
         Exception exception = assertThrows(RequiredObjectIsNullException.class,
@@ -238,6 +242,7 @@ class PersonServicesTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
+    // DELETE
     @Test
     void deletePersonById() {
         Person person = input.mockEntity(1);
@@ -251,6 +256,7 @@ class PersonServicesTest {
         verifyNoMoreInteractions(personRepository);
     }
 
+    // FIND ALL PEOPLE
     @Test
     void findAll() {
         List<Person> list = input.mockEntityList();
@@ -260,7 +266,7 @@ class PersonServicesTest {
         assertNotNull(people);
         assertEquals(14, people.size());
 
-        // Person One
+        // PERSON ONE
         var personOne = people.get(1);
 
         assertNotNull(personOne);
@@ -307,7 +313,7 @@ class PersonServicesTest {
         assertEquals("Last Name Test1", personOne.getLastName());
         assertEquals("Female", personOne.getGender());
 
-        //Person 4
+        // PERSON FOUR
         var personFour = people.get(4);
 
         assertNotNull(personFour);
@@ -354,7 +360,7 @@ class PersonServicesTest {
         assertEquals("Last Name Test4", personFour.getLastName());
         assertEquals("Male", personFour.getGender());
 
-        //Person 7
+        // PERSON SEVEN
         var personSeven = people.get(7);
 
         assertNotNull(personSeven);
