@@ -3,7 +3,6 @@ package br.com.caio.model.book;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -16,19 +15,18 @@ public class Book implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "author", nullable = false, length = 60)
+    @Column(nullable = false, length = 60)
     private String author;
 
-    @Column(name = "launch_date", nullable = false, length = 50)
-    private LocalDateTime launchDate;
+    @Column(name = "launch_date", nullable = false)
+    @Temporal(TemporalType.DATE) // to create date
+    private String launchDate;
 
-    @Column(name = "price", nullable = false)
+    @Column(nullable = false, length = 250)
     private Double price;
 
     @Column(name = "title", nullable = false)
     private String title;
-
-    public Book() {}
 
     public Long getId() {
         return id;
@@ -46,11 +44,11 @@ public class Book implements Serializable {
         this.author = author;
     }
 
-    public LocalDateTime getLaunchDate() {
+    public String getLaunchDate() {
         return launchDate;
     }
 
-    public void setLaunchDate(LocalDateTime launchDate) {
+    public void setLaunchDate(String launchDate) {
         this.launchDate = launchDate;
     }
 
